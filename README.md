@@ -2,6 +2,10 @@
 
 > tools
 
+## github pages
+
+(tools)[https://310venom.github.io/tools/]
+
 ## Build Setup
 
 ``` bash
