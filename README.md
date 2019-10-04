@@ -4,7 +4,7 @@
 
 ## github pages
 
-(tools)[https://310venom.github.io/tools/]
+[tools](https://310venom.github.io/tools/)
 
 ## Build Setup
 
