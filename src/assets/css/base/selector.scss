@@ -1,0 +1,59 @@
+/* セレクター初期設定用ファイル */
+body {
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+  word-break: break-all;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+  content: none;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption,
+th {
+  text-align: left;
+}
+
+header {
+  display: block;
+}
+
+img {
+  vertical-align: bottom;
+}
