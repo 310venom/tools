@@ -1,9 +1,11 @@
 <template>
-  <div class="hello">
+  <div class="index">
     <h1>{{ msg }}</h1>
     <ul>
       <li>
         <router-link to="/counter">counter</router-link>
+      </li>
+      <li>
         <router-link to="/list">list</router-link>
       </li>
     </ul>
@@ -15,12 +17,21 @@ export default {
   name: 'index',
   data () {
     return {
-      msg: 'INDEX'
+      msg: 'Tools'
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.index {
+  font-size: 16px;
 
+  ul {
+
+    li {
+      margin-top: 16px;
+    }
+  }
+}
 </style>
