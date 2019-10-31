@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/components/index'
-import counter from '@/components/pages/counter'
-import list from '@/components/pages/list'
+import index from '@/pages/index'
+import counter from '@/pages/counter'
+import list from '@/pages/list'
+import recipe from '@/pages/recipe'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/list',
       name: 'list',
       component: list
+    },
+    {
+      path: '/recipe',
+      name: 'recipe',
+      component: recipe
     }
   ]
 })
