@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="scss" scoped>
 header {
   background: #fff;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16);

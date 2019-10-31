@@ -10,11 +10,11 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="scss" scoped>
 footer {
   align-items: center;
   background: #fff;
-  border-top: solid 1px var(--border-color);
+  border-top: solid 1px #ccc;
   box-sizing: border-box;
   display: flex;
   font-size: 14px;

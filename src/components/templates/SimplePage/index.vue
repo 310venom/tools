@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="scss" scoped>
 .page {
   box-sizing: border-box;
   display: flex;
@@ -56,7 +56,7 @@ export default {
   flex: 1 1 auto;
   flex-direction: column;
   margin: 0 auto;
-  padding: 8px 16px 16px;
+  padding: 16px;
   width: 100%;
 
   @media screen and (min-width: 768px) {
