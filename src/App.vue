@@ -1,12 +1,18 @@
 <template>
   <div id="app">
-    <router-view/>
+    <SimplePage>
+      <router-view/>
+    </SimplePage>
   </div>
 </template>
 
 <script>
+import SimplePage from '@/components/templates/SimplePage'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    SimplePage,
+  },
 }
 </script>
 

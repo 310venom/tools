@@ -1,19 +1,13 @@
 <template>
-  <SimplePage>
-    <div class="recipe">
-      レシピメーカー
-    </div>
-  </SimplePage>
+  <div class="recipe">
+    レシピメーカー
+  </div>
 </template>
 
 <script>
-import SimplePage from '@/components/templates/SimplePage'
 
 export default {
   name: 'recipe',
-  components: {
-    SimplePage,
-  },
   data() {
     return {
       recipe: 'recipe',

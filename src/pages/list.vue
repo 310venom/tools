@@ -1,31 +1,25 @@
 <template>
-  <SimplePage>
-    <div class="tweet">
-      <nav class="nav">
-        <ul class="nav-list">
-          <li v-for="(group, index) in tweet" :key="index" v-on:click="toggle(index)" class="nav-item">{{ group.genre }}</li>
-        </ul>
-      </nav>
-      <div v-for="(group, index) in tweet" :key="index" class="block" v-show="isActive === index">
-        <ul class="list">
-          <li class="item" v-for="(item, index) in group.list" :key="index">
-            <blockquote class="twitter-tweet" data-lang="ja"><a v-bind:href="'https://twitter.com/310_progressive/status/' + item + '?ref_src=twsrc%5Etfw'"></a></blockquote>
-          </li>
-        </ul>
-      </div>
+  <div class="tweet">
+    <nav class="nav">
+      <ul class="nav-list">
+        <li v-for="(group, index) in tweet" :key="index" v-on:click="toggle(index)" class="nav-item">{{ group.genre }}</li>
+      </ul>
+    </nav>
+    <div v-for="(group, index) in tweet" :key="index" class="block" v-show="isActive === index">
+      <ul class="list">
+        <li class="item" v-for="(item, index) in group.list" :key="index">
+          <blockquote class="twitter-tweet" data-lang="ja"><a v-bind:href="'https://twitter.com/310_progressive/status/' + item + '?ref_src=twsrc%5Etfw'"></a></blockquote>
+        </li>
+      </ul>
     </div>
-  </SimplePage>
+  </div>
 </template>
 
 <script>
 import tweet from '@json/data.json'
-import SimplePage from '@/components/templates/SimplePage'
 
 export default {
   name: 'list',
-  components: {
-    SimplePage,
-  },
   data() {
     return {
       tweet: tweet,
