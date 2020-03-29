@@ -3,7 +3,7 @@
     <p>レシピメーカー</p>
     <div>
       <span>キャラクター</span>
-      <SelectBox v-model="character" :items="{'sol': 'ソル', 'ky': 'カイ'}" />
+      <SelectBox v-model="character" :items="{'sol': 'ソル', 'ky': 'カイ'}" @change="fetch()" />
       <span>必殺技の表示</span>
       <SelectBox v-model="specialDisp" :items="{'name': '技名', 'input': '入力'}" />
     </div>
@@ -17,10 +17,8 @@
         small
       >{{move}}</Button>
     </div>
-    <div v-for="(char, index) in special" :key="index">
+    <div v-for="(item, index) in specials.data" :key="index">
       <Button
-        v-for="(item, i) in char[character]"
-        :key="i"
         :value="item[specialDisp]"
         @click="addText($event)"
         small
@@ -34,6 +32,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Button from '@/components/atoms/Button'
 import SelectBox from '@/components/atoms/SelectBox'
 
@@ -53,30 +52,23 @@ export default {
         air: ['JP', 'JK', 'JS', 'JHS', 'JD'],
         unipue: [],
       },
-      special: [
-        {
-          'sol': [
-            {
-              name: 'ガンフレイム',
-              input: '236P',
-            },
-          ],
-          'ky': [
-            {
-              name: 'スタンエッジ',
-              input: '236S',
-            },
-          ],
-        },
-      ],
     }
   },
   computed: {
+    ...mapState({
+      specials: state => state.specials,
+    }),
     recipe() {
       return this.text.join(' > ')
     },
   },
+  mounted() {
+    this.fetch()
+  },
   methods: {
+    fetch() {
+      this.$store.dispatch('specials/get', this.character)
+    },
     addText(text) {
       this.text.push(text.target.value)
     },
