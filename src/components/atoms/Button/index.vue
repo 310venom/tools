@@ -94,7 +94,7 @@ export default {
   padding: 0;
   text-align: center;
   user-select: none;
-  width: 160px;
+  min-width: 160px;
 
   &:focus {
     box-shadow: 0 0 0 3px #ffe082;
@@ -123,7 +123,12 @@ export default {
     font-size: 15px;
     height: 40px;
     line-height: 38px;
-    width: 112px;
+    min-width: 112px;
+
+    // @media screen and (max-width: 480px) {
+    //   font-size: 11px;
+    //   width: 20%;
+    // }
   }
 
   &.x-small {
@@ -139,13 +144,6 @@ export default {
       height: 18px;
       margin-right: 4px;
       width: 18px;
-    }
-  }
-
-  /* レスポンシブ */
-  .responsive & {
-    @media screen and (--sp-size) {
-      border-radius: 4px;
     }
   }
 

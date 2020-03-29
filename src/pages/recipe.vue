@@ -8,7 +8,10 @@
       <SelectBox v-model="specialDisp" :items="{'name': '技名', 'input': '入力'}" />
     </div>
     <textarea v-model="recipe" class="textarea"></textarea>
-    <div v-for="(type, index) in moveList" :key="index">
+    <div class="normal"
+      v-for="(type, index) in normal"
+      :key="`normal_${index}`"
+    >
       <Button
         v-for="(move, i) in type"
         :key="i"
@@ -17,7 +20,19 @@
         small
       >{{move}}</Button>
     </div>
-    <div v-for="(item, index) in specials.data" :key="index">
+    <div class="unique">
+      <Button
+        v-for="(move, index) in unique"
+        :key="`unique${index}`"
+        :value="move"
+        @click="addText($event)"
+        small
+      >{{move}}</Button>
+    </div>
+    <div class="specials"
+      v-for="(item, index) in moveList.specials"
+      :key="`specials${index}`"
+    >
       <Button
         :value="item[specialDisp]"
         @click="addText($event)"
@@ -47,19 +62,23 @@ export default {
       text: [],
       character: 'sol',
       specialDisp: 'name',
-      moveList: {
-        normal: ['P', 'K', 'S', 'HS', 'D', '2D', '6P', '6HS'],
-        air: ['JP', 'JK', 'JS', 'JHS', 'JD'],
-        unipue: [],
-      },
+      normal: [
+        ['P', 'K', 'S', 'HS', 'D'],
+        ['2P', '2K', '2S', '2HS', '2D'],
+        ['JP', 'JK', 'JS', 'JHS', 'JD'],
+      ],
+      common: ['6P', '6HS'],
     }
   },
   computed: {
     ...mapState({
-      specials: state => state.specials,
+      moveList: state => state.moveList.move,
     }),
     recipe() {
       return this.text.join(' > ')
+    },
+    unique() {
+      return this.moveList.unique ? this.common.concat(this.moveList.unique) : this.common
     },
   },
   mounted() {
@@ -67,7 +86,7 @@ export default {
   },
   methods: {
     fetch() {
-      this.$store.dispatch('specials/get', this.character)
+      this.$store.dispatch('moveList/get', this.character)
     },
     addText(text) {
       this.text.push(text.target.value)
