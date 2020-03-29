@@ -1,6 +1,12 @@
 <template>
   <div class="recipe">
-    レシピメーカー
+    <p>レシピメーカー</p>
+    <div>
+      <span>キャラクター</span>
+      <SelectBox v-model="character" :items="{'sol': 'ソル', 'ky': 'カイ'}" />
+      <span>必殺技の表示</span>
+      <SelectBox v-model="specialDisp" :items="{'name': '技名', 'input': '入力'}" />
+    </div>
     <textarea v-model="recipe" class="textarea"></textarea>
     <div v-for="(type, index) in moveList" :key="index">
       <Button
@@ -11,27 +17,58 @@
         small
       >{{move}}</Button>
     </div>
-    <div><Button @click="onDelete" small>1つ戻る</Button></div>
+    <div v-for="(char, index) in special" :key="index">
+      <Button
+        v-for="(item, i) in char[character]"
+        :key="i"
+        :value="item[specialDisp]"
+        @click="addText($event)"
+        small
+      >{{item[specialDisp]}}</Button>
+    </div>
+    <div>
+      <Button @click="onDelete" small>1つ戻る</Button>
+      <Button @click="clear" small>クリア</Button>
+    </div>
   </div>
 </template>
 
 <script>
 import Button from '@/components/atoms/Button'
+import SelectBox from '@/components/atoms/SelectBox'
 
 export default {
   name: 'recipe',
   components: {
     Button,
+    SelectBox,
   },
   data() {
     return {
       text: [],
+      character: 'sol',
+      specialDisp: 'name',
       moveList: {
-        normal: ['P', 'K', 'S', 'HS', 'D', '2D'],
+        normal: ['P', 'K', 'S', 'HS', 'D', '2D', '6P', '6HS'],
         air: ['JP', 'JK', 'JS', 'JHS', 'JD'],
         unipue: [],
-        special: [],
       },
+      special: [
+        {
+          'sol': [
+            {
+              name: 'ガンフレイム',
+              input: '236P',
+            },
+          ],
+          'ky': [
+            {
+              name: 'スタンエッジ',
+              input: '236S',
+            },
+          ],
+        },
+      ],
     }
   },
   computed: {
@@ -45,6 +82,9 @@ export default {
     },
     onDelete() {
       this.text.pop()
+    },
+    clear() {
+      this.text = []
     },
   }
 }
