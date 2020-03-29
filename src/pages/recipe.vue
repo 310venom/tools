@@ -7,7 +7,7 @@
       <span>必殺技の表示</span>
       <SelectBox v-model="specialDisp" :items="{'name': '技名', 'input': '入力'}" />
     </div>
-    <textarea v-model="recipe" class="textarea"></textarea>
+    <textarea v-model="text" class="textarea"/>
     <div class="normal"
       v-for="(type, index) in normal"
       :key="`normal_${index}`"
@@ -29,11 +29,10 @@
         small
       >{{move}}</Button>
     </div>
-    <div class="specials"
-      v-for="(item, index) in moveList.specials"
-      :key="`specials${index}`"
-    >
+    <div class="specials">
       <Button
+        v-for="(item, index) in moveList.specials"
+        :key="`specials${index}`"
         :value="item[specialDisp]"
         @click="addText($event)"
         small
@@ -59,7 +58,7 @@ export default {
   },
   data() {
     return {
-      text: [],
+      text: '',
       character: 'sol',
       specialDisp: 'name',
       normal: [
@@ -74,9 +73,6 @@ export default {
     ...mapState({
       moveList: state => state.moveList.move,
     }),
-    recipe() {
-      return this.text.join(' > ')
-    },
     unique() {
       return this.moveList.unique ? this.common.concat(this.moveList.unique) : this.common
     },
@@ -89,10 +85,11 @@ export default {
       this.$store.dispatch('moveList/get', this.character)
     },
     addText(text) {
-      this.text.push(text.target.value)
+      this.text = this.text + ` > ${text.target.value}`
     },
     onDelete() {
-      this.text.pop()
+      const tgt = this.text.lastIndexOf(' > ')
+      if (tgt > 0) this.text = this.text.slice(0, this.text.lastIndexOf(' > '))
     },
     clear() {
       this.text = []

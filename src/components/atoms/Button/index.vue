@@ -79,7 +79,7 @@ export default {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
-  box-shadow: 0 1px #ddd;
+  box-shadow: none;
   box-sizing: border-box;
   color: #47a3cc;
   cursor: pointer;
@@ -88,10 +88,9 @@ export default {
   font-size: 21px;
   font-weight: bold;
   height: 56px;
-  line-height: 54px;
   margin: 0;
   outline: 0;
-  padding: 0;
+  padding: 8px;
   text-align: center;
   user-select: none;
   min-width: 160px;
@@ -119,10 +118,8 @@ export default {
 
   &--small {
     border-radius: 4px;
-    box-shadow: none;
     font-size: 15px;
     height: 40px;
-    line-height: 38px;
     min-width: 112px;
 
     // @media screen and (max-width: 480px) {
