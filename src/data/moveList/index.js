@@ -20,9 +20,18 @@ export default {
     ],
   },
   ky: {
-    unique: ['6K'],
+    unique: ['6K', '3HS'],
     specials: [
       { name: 'スタンエッジ', input: '236S' },
+      { name: 'スタンエッジ・チャージアタック', input: '236HS' },
+      { name: '空中スタンエッジ', input: '空中で236S' },
+      { name: 'スタンディッパー', input: '236K' },
+      { name: 'グリードセバー', input: '214K' },
+      { name: 'ヴェイパースラスト', input: '623S or HS' },
+      { name: 'スプリットシエル', input: '236D' },
+      { name: 'ライド・ザ・ライトニング', input: '632146HS or D' },
+      { name: 'セイクリッドエッジ', input: '236236P' },
+      { name: 'ライジング・フォース', input: '236236HS' },
     ],
   },
 }

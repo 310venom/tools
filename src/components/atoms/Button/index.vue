@@ -32,6 +32,8 @@ export default {
     xSmall: Boolean,
     /** アイコンのみのボタン */
     icon: Boolean,
+    /** フィット幅 */
+    fit: Boolean,
     /** 非活性 */
     disabled: Boolean,
   },
@@ -39,11 +41,12 @@ export default {
     classes() {
       return {
         button: !this.icon,
+        fit: this.fit,
+        small: this.small,
         'icon-button': this.icon,
         'is-lead': this.primary,
         'is-caution': this.caution,
         'is-alert': this.danger,
-        'button--small': this.small,
         'x-small': this.xSmall,
       }
     },
@@ -116,16 +119,11 @@ export default {
     fill: #dd2c00;
   }
 
-  &--small {
+  &.small {
     border-radius: 4px;
     font-size: 15px;
     height: 40px;
     min-width: 112px;
-
-    // @media screen and (max-width: 480px) {
-    //   font-size: 11px;
-    //   width: 20%;
-    // }
   }
 
   &.x-small {
@@ -141,6 +139,15 @@ export default {
       height: 18px;
       margin-right: 4px;
       width: 18px;
+    }
+  }
+
+  &.fit {
+    padding: 0 7px;
+    width: fit-content;
+
+    .inner {
+      padding: 0;
     }
   }
 
